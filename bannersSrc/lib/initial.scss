@@ -1,0 +1,271 @@
+@import "../globalvars";
+
+
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body {
+	width:100%;
+	height:100%;
+	margin: 0;
+	padding: 0;
+	color: $bodyColour;
+}
+
+
+/* ==========================================================================
+   Banner sizes
+   ========================================================================== */
+.banner {
+	overflow: hidden;
+	/* This code centres the banners in the viewport */
+	margin-left: auto;
+	margin-right: auto;
+	top: 50%;
+	position: relative;
+	transform: translateY(-50%);
+	background-image: url("bg.jpg");
+	text-align: center;
+	transform-style-property: flat;
+}
+
+.banner--MPU {
+	width: 300px;
+	height: 250px;
+}
+.banner--DMPU {
+	width: 300px;
+	height: 600px;
+}
+
+.banner--LDB {
+	width: 728px;
+	height: 90px;
+}
+.banner--SKY {
+	width: 120px;
+	height: 600px;
+}
+.banner--WSKY {
+	width: 160px;
+	height: 600px;
+}
+
+.banner--MOB {
+	width: 300px;
+	height: 50px;
+}
+
+
+.banner--WMOB {
+	width: 320px;
+	height: 50px;
+}
+
+.banner--BILL {
+	width: 970px;
+	height: 250px;
+
+	&.expanded {
+		height: 500px;
+	}
+}
+
+
+/* ==========================================================================
+   Loader
+   ========================================================================== */
+.loader {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	background-color: $loadingScreenColour;
+	top:0;
+	left:0;
+	cursor:pointer;
+
+	
+}
+
+.loader-content { 
+
+	position: relative;
+ 	top: 50%;
+  	transform: translateY(-50%);
+}
+
+
+.border { 
+
+	top:0;
+	left:0;
+	box-shadow:inset 0px 0px 0px 1px $borderColour;
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+body,
+.font-primary {
+	font-family: $font-family-primary;
+
+}
+.font-secondary {
+	font-family:  $font-family-secondary;
+	text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   Utility classes
+   ========================================================================== */
+.is-hidden {
+	display: none;
+}
+.is-visible {
+	display: block;
+}
+
+.is-inline-block {
+	display:inline-block;
+}
+
+.is-inline {
+	display:inline;
+}
+
+.font-smooth
+{
+	text-rendering: optimizeLegibility;
+
+	-webkit-font-smoothing: antialiased;
+
+	-moz-osx-font-smoothing: grayscale;
+
+	font-smoothing: antialiased;
+
+	.is-android &
+	{
+		// ANDROID FIX (FOR DEVICES THAT DON'T SUPPORT THE ABOVE)
+
+		text-rendering: auto;
+
+		-webkit-font-smoothing: auto;
+
+		-moz-osx-font-smoothing: auto;
+
+		font-smoothing: auto;
+	}
+}
+
+.perspective-smooth
+{
+	outline: 1px solid transparent;
+}
+
+.animation-smooth
+{
+	backface-visibility: hidden;
+}
+
+
+.tap-area {
+	position:absolute;
+	top:0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	cursor:pointer;
+}
+
+
+.it-hasFadeInCTA { 
+
+	animation: fadeInCTA .5s ease-out  1s;
+	animation-fill-mode: forwards;
+
+}
+
+/* ==========================================================================
+  bug fixes
+   ========================================================================== */
+
+
+// fix for rendering problem in mobile safari for small fonts.
+@media screen and (max-device-width: 480px){
+ body {
+   -webkit-text-size-adjust: none;
+ }
+}
+
+
+/* ==========================================================================
+   Simple animation Engine 
+   ========================================================================== */
+
+
+/*  general fade in */
+@keyframes fadeIn {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+/*  general fade out */
+@keyframes fadeOut {
+    0%   {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+// for the loader
+.is-smoothLoaderFading  {
+
+	animation: fadeOut .5s ease-in ;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+
+.it-hasFadeIn {
+	animation: fadeIn $timingFadeIn ease-out ;
+	animation-fill-mode: forwards;
+	opacity: 0;
+} 
+
+.it-hasFadeInDelay {
+	animation: fadeIn $timingFadeIn ease-out $timingStagger ;
+	animation-fill-mode: forwards;
+	opacity: 0;
+} 
+
+.it-hasFadeInDelayX2 {
+	animation: fadeIn $timingFadeIn ease-out $timingStagger*2;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+.it-hasFadeInDelayX3 {
+	animation: fadeIn $timingFadeIn ease-out $timingStagger*3;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+.it-hasFadeOut {
+
+	animation: fadeOut $timingFadeOut ease-in ;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+
+
+
